@@ -7,8 +7,11 @@
 <h2>category details</h2>
 
 <div>
+        @Html.ActionLink("back", "Index", null, new { @class = "btn btn-primary btn-large" })
     <hr />
     <dl class="dl-horizontal">
+
+
         <dd>
             <img src="~/CategoriesPhoto/@Model.ImageCategory" alt="Zdj" height="200" width="200" />
         </dd>
@@ -25,10 +28,23 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dd>
-            @Html.ActionLink("back", "Index", null, new { @class = "btn btn-primary btn-large" })
-            </dd>
 
-</dl>
+        <br />
+        <div class="row">
+            @foreach (var item in Model.Photographies)
+            {
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <img src="~/PhotographyPhoto/@item.ImagePhoto" alt="Zdjęcie" height="200" width="200" />
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                        @Html.DisplayFor(modelItem => item.Name)<br />
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </dl>
 
 </div>
