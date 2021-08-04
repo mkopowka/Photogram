@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Photogram.Models.Gallery>
+
+@{
+    ViewBag.Title = "galleries";
+}
+<h2>galleries</h2>
+
+@using (Html.BeginForm("Index", "Galleries", FormMethod.Get))
+{
+}
+    @Html.ActionLink("add new gallery", "Create", null, new { @class = "btn btn-primary btn-large" })
+<div class="row">
+    <hr />
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <div class="col-md-5" >
+                    <a href='@Url.Action("Details", new { @id = item.Id })'>
+                        <img src="~/GalleryPhoto/@item.ImageGallery" alt="Zdj" height="200" width="200" />
+                    </a>
+                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.ActionLink("delete", "Delete", new { id = item.Id })
+            </div>
+        </div>
+    }
+
+</div>
+
+
